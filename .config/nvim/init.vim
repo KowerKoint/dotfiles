@@ -5,9 +5,9 @@ set expandtab
 "プログラミング言語に合わせて適切にインデントを自動挿入
 set smartindent
 "各コマンドやsmartindentで挿入する空白の量
-set shiftwidth=4
+set shiftwidth=2
 "Tabキーで挿入するスペースの数
-set softtabstop=4
+set softtabstop=2
 "カレントディレクトリを自動で移動
 set autochdir
 "バッファ内で扱う文字コード
@@ -83,8 +83,8 @@ command! Setup call Setup()
 
 "ファイルを開き直したときに実行コマンドを再設定
 autocmd BufNewFile,BufRead * Setup
-"RubyとJSではインデントを2マスにする
-autocmd FileType ruby,javascript set shiftwidth=2 softtabstop=2
+"コンパイラ言語ではインデントを4マスにする
+autocmd FileType c,cpp,java,cs set shiftwidth=4 softtabstop=4
 autocmd BufNewFile,BufRead *.vb setfiletype vbnet
 autocmd FileType c call system(printf('cp -f ~/mylib/compile_flags_c.txt %s/compile_flags.txt', expand("%:h")))
 autocmd FileType cpp call system(printf('cp -f ~/mylib/compile_flags_cpp.txt %s/compile_flags.txt', expand("%:h")))
