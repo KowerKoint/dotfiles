@@ -39,17 +39,17 @@ imap <Nul> <Nop>
 
 "下部分にターミナルウィンドウを作る
 function! Myterm()
-    split
-    wincmd j
-    resize 10
-    terminal
-    wincmd k
+  split
+  wincmd j
+  resize 10
+  terminal
+  wincmd k
 endfunction
 command! Myterm call Myterm()
 
 "起動時にターミナルウィンドウを設置
 if has('vim_starting')
-    Myterm
+  Myterm
 endif
 
 "上のエディタウィンドウと下のターミナルウィンドウ(ターミナル挿入モード)を行き来
@@ -60,24 +60,24 @@ tnoremap <Esc> <C-\><C-n>
 
 "ファイルタイプごとにコンパイル/実行コマンドを定義
 function! Setup()
-    "フルパスから拡張子を除いたもの
-    let l:no_ext_path = printf("%s/%s", expand("%:h"), expand("%:r"))
-    "各言語の実行コマンド
-    let g:compile_command_dict = {
-                \'c': printf('gcc -std=gnu11 -O2 -lm -o %s.out %s && %s/%s.out', expand("%:r"), expand("%:p"), expand("%:h"), expand("%:r")),
-                \'cpp': printf('g++ -std=gnu++17 -I/home/kowerkoint/mylib/ac-library -O2 -o %s.out %s && %s/%s.out', expand("%:r"), expand("%:p"), expand("%:h"), expand("%:r")),
-                \'java': printf('javac %s && java %s', expand("%:p"), expand("%:r")),
-                \'cs': printf('mcs -r:System.Numerics -langversion:latest %s && mono %s/%s.exe', expand("%:p"), expand("%:h"), expand("%:r")),
-                \'python': printf('python3 %s', expand("%:p")),
-                \'ruby': printf('ruby %s', expand("%:p")),
-                \'javascript': printf('node %s', expand("%:p")),
-                \'sh': printf('chmod u+x %s && %s', expand("%:p"), expand("%:p"))
-                \}
-    "実行コマンド辞書に入ってたら実行キーバインドを設定
-    if match(keys(g:compile_command_dict), &filetype) >= 0
-        "下ウィンドウがターミナルであることを前提としている
-        nnoremap <expr> <F5> '<C-w>ji<C-u>' . g:compile_command_dict[&filetype] . '<CR>'
-    endif
+  "フルパスから拡張子を除いたもの
+  let l:no_ext_path = printf("%s/%s", expand("%:h"), expand("%:r"))
+  "各言語の実行コマンド
+  let g:compile_command_dict = {
+        \'c': printf('gcc -std=gnu11 -O2 -lm -o %s.out %s && %s/%s.out', expand("%:r"), expand("%:p"), expand("%:h"), expand("%:r")),
+        \'cpp': printf('g++ -std=gnu++17 -I/home/kowerkoint/mylib/ac-library -O2 -o %s.out %s && %s/%s.out', expand("%:r"), expand("%:p"), expand("%:h"), expand("%:r")),
+        \'java': printf('javac %s && java %s', expand("%:p"), expand("%:r")),
+        \'cs': printf('mcs -r:System.Numerics -langversion:latest %s && mono %s/%s.exe', expand("%:p"), expand("%:h"), expand("%:r")),
+        \'python': printf('python3 %s', expand("%:p")),
+        \'ruby': printf('ruby %s', expand("%:p")),
+        \'javascript': printf('node %s', expand("%:p")),
+        \'sh': printf('chmod u+x %s && %s', expand("%:p"), expand("%:p"))
+        \}
+  "実行コマンド辞書に入ってたら実行キーバインドを設定
+  if match(keys(g:compile_command_dict), &filetype) >= 0
+    "下ウィンドウがターミナルであることを前提としている
+    nnoremap <expr> <F5> '<C-w>ji<C-u>' . g:compile_command_dict[&filetype] . '<CR>'
+  endif
 endfunction
 command! Setup call Setup()
 
@@ -98,13 +98,13 @@ nnoremap <expr> <F7>f '<C-w>jiatcoder ' . g:contestname . ' f ' . expand("%:p") 
 
 command! -nargs=1 Atcoder call Atcoder(<f-args>)
 function! Atcoder(name)
-    let g:contestname = a:name
-    call system('xdg-open https://atcoder.jp/contests/' . g:contestname . '/tasks/' . g:contestname . '_a')
+  let g:contestname = a:name
+  call system('xdg-open https://atcoder.jp/contests/' . g:contestname . '/tasks/' . g:contestname . '_a')
 endfunction
 
 command! -nargs=1 Tweet call Tweet(<f-args>)
 function! Tweet(content)
-    call system('tweet.sh post ' . a:content)
+  call system('tweet.sh post ' . a:content)
 endfunction
 
 "textobj-userの衝突回避---------------
@@ -139,41 +139,41 @@ let s:dein_dir = '/home/kowerkoint/.cache/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if &runtimepath !~# '/dein.vim'
-    if !isdirectory(s:dein_repo_dir)
-        execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-    endif
-    execute 'set runtimepath^=' . s:dein_repo_dir
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . s:dein_repo_dir
 endif
 
 let g:dein#install_github_api_token = 'f02ff55e9c47081941e397d1fcef2f77346b9b5f'
 
 if dein#load_state(s:dein_dir)
-    call dein#begin(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-    let s:rc_dir = '/home/kowerkoint/.vim'
-    if !isdirectory(s:rc_dir)
-        call mkdir(s:rc_dir, 'p')
-    endif
-    let s:toml = s:rc_dir . '/dein.toml'
-    let s:lazy_toml = s:rc_dir . '/dein_lazy.toml'
+  let s:rc_dir = '/home/kowerkoint/.vim'
+  if !isdirectory(s:rc_dir)
+    call mkdir(s:rc_dir, 'p')
+  endif
+  let s:toml = s:rc_dir . '/dein.toml'
+  let s:lazy_toml = s:rc_dir . '/dein_lazy.toml'
 
-    call dein#load_toml(s:toml, {'lazy': 0})
-    call dein#load_toml(s:lazy_toml, {'lazy' : 1})
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy' : 1})
 
-    call dein#end()
-    call dein#save_state()
+  call dein#end()
+  call dein#save_state()
 endif
 
 if dein#check_install()
-    call dein#install()
+  call dein#install()
 endif
 
 let s:removed_plugins = dein#check_clean()
 if len(s:removed_plugins) > 0
-    call map(s:removed_plugins, "delete(v:val, 'rf')")
-    call dein#recache_runtimepath()
+  call map(s:removed_plugins, "delete(v:val, 'rf')")
+  call dein#recache_runtimepath()
 endif
 
 if dein#check_update(v:true)
-    call dein#update()
+  call dein#update()
 endif
