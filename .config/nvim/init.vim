@@ -85,9 +85,25 @@ command! Setup call Setup()
 autocmd BufNewFile,BufRead * Setup
 "コンパイラ言語ではインデントを4マスにする
 autocmd FileType c,cpp,java,cs set shiftwidth=4 softtabstop=4
+"Visual Basic .NETのファイルタイプ判別
 autocmd BufNewFile,BufRead *.vb setfiletype vbnet
+"C/C++を開いたときにcompile_flagsをカレントディレクトリに作る
 autocmd FileType c call system(printf('cp -f ~/mylib/compile_flags_c.txt %s/compile_flags.txt', expand("%:h")))
 autocmd FileType cpp call system(printf('cp -f ~/mylib/compile_flags_cpp.txt %s/compile_flags.txt', expand("%:h")))
+
+"シンボリックリンクを開いたときに元ファイルを開き直す
+"autocmd BufEnter * if findfile(expand('%')) != "" && resolve(expand('%:p')) != getcwd().'/'.expand('%') | execute ':FollowSymlink' | endif
+
+command! FollowSymlink call s:SwitchToActualFile()
+function! s:SwitchToActualFile()
+  let l:fname = resolve(expand('%:p'))
+  let l:pos = getpos('.')
+  let l:bufname = bufname('%')
+  enew
+  exec 'bw '. l:bufname
+  exec "e" . fname
+  call setpos('.', pos)
+endfunction
 
 nnoremap <expr> <F7>a '<C-w>jiatcoder ' . g:contestname . ' a ' . expand("%:p") . '<CR>'
 nnoremap <expr> <F7>b '<C-w>jiatcoder ' . g:contestname . ' b ' . expand("%:p") . '<CR>'
