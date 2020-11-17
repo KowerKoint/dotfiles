@@ -35,6 +35,8 @@ nnoremap <expr> S* ':%s/\<' . expand('<cword>') . '\>/'
 "挿入モード終了時にIMEをオフ：ダメならfcitxとfcitx-mozcをインストールして設定
 inoremap <silent> <Esc> <Esc>:<C-u>call system('fcitx-remote -c')<CR>
 
+nnoremap <C-p> :p .<CR>
+
 imap <Nul> <Nop>
 
 "下部分にターミナルウィンドウを作る
