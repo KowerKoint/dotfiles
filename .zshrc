@@ -83,9 +83,6 @@ function open() {
 }
 
 setopt auto_cd
-function chpwd() {
-  lsd -a
-}
 
 function cmdedit() {
   nvim $(which $argv)
