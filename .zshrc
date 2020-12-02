@@ -72,7 +72,7 @@ man() {
   }
 
 export EDITOR=nvim
-export PATH="$HOME/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/bin:$HOME/go/bin:$PATH:$HOME/.local/bin"
 
 function mc() {
   mkdir $argv && cd $argv
