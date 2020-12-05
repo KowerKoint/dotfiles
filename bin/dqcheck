@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+imlist=`fcitx-imlist -l`
+echo $imlist
+#dvq=${imlist:0:31}
+#echo $dvq
+#if [ "$dvq" = "fcitx-keyboard-us-dvorak-qwerty" ]; then
+    #echo 1
+#else
+    #echo 0
+#fi
