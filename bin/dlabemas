@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+for i in `seq 9 9`
+do
+    streamlink "https://abema.tv/video/episode/26-105_s1_p8" best -o output1.ts
+    ffmpeg -i output1.ts -c copy "神様になった日_8.mp4"
+    rm -f output1.ts
+done
