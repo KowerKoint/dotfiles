@@ -42,3 +42,6 @@
 <install texlab "https://github.com/latex-lsp/texlab/releases">
 `sudo npm i -g bash-language-server`
 `agi openjdk-11-jdk`
+`mkdir ~/mylib/jdt-language-server`
+`wget -O - "http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz" | tar zxvf - -C ~/mylib/jdt-language-server`
+`ln -s $(find ~/mylib/jdt-language-server/plugins -name "org.eclipse.equinox.launcher_*") ~/mylib/org.eclipse.equinox.launcher.jar`

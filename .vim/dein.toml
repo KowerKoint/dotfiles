@@ -115,7 +115,7 @@ let g:LanguageClient_serverCommands = {
       \   '-Dlog.level=ALL',
       \   '-noverify',
       \   '-Xmx1G',
-      \   '-jar', '/home/kowerkoint/mylib/jdt-language-server/plugins/org.eclipse.equinox.launcher_1.5.700.v20200207-2156.jar',
+      \   '-jar', '/home/kowerkoint/mylib/org.eclipse.equinox.launcher.jar',
       \   '-configuration', '/home/kowerkoint/mylib/jdt-language-server/config_linux',
       \   '-data', getcwd()],
       \ 'html':['html-languageserver', '--stdio'],
