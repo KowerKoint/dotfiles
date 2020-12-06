@@ -1,5 +1,6 @@
 # dotfiles
 (WSL Ubuntu20.04)
+`sudo apt update`
 `sudo apt install zsh`
 `chsh $(whoami)` -> `/usr/bin/zsh`
 <Reboot>
@@ -13,6 +14,7 @@
 `agi silversearcher-ag`
 `agi neovim`
 `agi npm`
+`sudo npm install -g npm`
 `sudo npm install -g neovim`
 `sudo pip3 neovim`
 `sudo pip3 --upgrade pynvim`
@@ -30,3 +32,12 @@
 `sudo pip3 install --upgrade msgpack`
 `nvim` -> :wqa
 `agi fcitx`
+`agi clangd`
+`sudo pip3 install python-language-server`
+`sudo gem install solargraph`
+`sudo npm install -g vscode-html-languageserver-bin`
+`sudo npm install -g vscode-css-languageserver-bin`
+`sudo npm install -g vscode-json-languageserver-bin`
+`sudo npm install -g javascript-typescript-langserver`
+<install texlab "https://github.com/latex-lsp/texlab/releases">
+`sudo npm i -g bash-language-server`
