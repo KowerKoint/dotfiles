@@ -41,3 +41,4 @@
 `sudo npm install -g javascript-typescript-langserver`
 <install texlab "https://github.com/latex-lsp/texlab/releases">
 `sudo npm i -g bash-language-server`
+`agi openjdk-11-jdk`
