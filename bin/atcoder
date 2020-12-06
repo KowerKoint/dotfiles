@@ -44,8 +44,8 @@ csrf_token = s.find(attrs={'name': 'csrf_token'}).get('value')
 
 login_info = {
     "csrf_token": csrf_token,
-    "username": "KowerKoint",
-    "password": "ganbaruby9"
+    "username": "USERNAME",
+    "password": "PASSWORD"
 }
 
 result = session.post(LOGIN_URL, data=login_info)
