@@ -13,6 +13,10 @@ backup_and_link() {
     fi
     mv "$HOME/$1" "$HOME/.dotbackup/$dir"
   fi
+  if [[ ! -d "$HOME/$dir" ]]; then
+    echo "make dir $HOME/$dir"
+    mkdir "$HOME/$dir"
+  fi
   ln -snf $dotdir/$1 $HOME/$1
 }
 
