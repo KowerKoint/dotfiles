@@ -45,3 +45,7 @@
 `mkdir ~/mylib/jdt-language-server`
 `wget -O - "http://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz" | tar zxvf - -C ~/mylib/jdt-language-server`
 `ln -s $(find ~/mylib/jdt-language-server/plugins -name "org.eclipse.equinox.launcher_*") ~/mylib/org.eclipse.equinox.launcher.jar`
+`curl https://sh.rustup.rs -sSf | sh`
+`rustup component add rls`
+`rustup component add rust-analysis`
+`rustup component add rust-src`

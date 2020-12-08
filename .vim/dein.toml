@@ -124,7 +124,8 @@ let g:LanguageClient_serverCommands = {
       \ 'javascript':['javascript-typescript-stdio'],
       \ 'typescript':['javascript-typescript-stdio'],
       \ 'tex':['texlab'],
-      \ 'sh':['bash-language-server', 'start']
+      \ 'sh':['bash-language-server', 'start'],
+      \ 'rust': ['rustup', 'run', 'stable', 'rls']
       \ }
 
 let g:LanguageClient_autoStart = 1
