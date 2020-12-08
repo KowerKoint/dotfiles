@@ -74,7 +74,8 @@ function! Setup()
         \'python': printf('python3 %s', expand("%:p")),
         \'ruby': printf('ruby %s', expand("%:p")),
         \'javascript': printf('node %s', expand("%:p")),
-        \'sh': printf('chmod u+x %s && %s', expand("%:p"), expand("%:p"))
+        \'sh': printf('chmod u+x %s && %s', expand("%:p"), expand("%:p")),
+        \'rust': printf('rustc %s && %s/%s', expand("%:p"), expand("%:h"), expand("%:r"))
         \}
   "実行コマンド辞書に入ってたら実行キーバインドを設定
   if match(keys(g:compile_command_dict), &filetype) >= 0
