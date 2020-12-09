@@ -49,3 +49,4 @@
 `rustup component add rls`
 `rustup component add rust-analysis`
 `rustup component add rust-src`
+`agi nkf`
