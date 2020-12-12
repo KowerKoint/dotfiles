@@ -1,8 +1,0 @@
-#!/usr/bin/bash
-
-for i in `seq 7 7`
-do
-    streamlink "https://abema.tv/video/episode/25-156_s2_p9" best -o output2.ts
-    ffmpeg -i output2.ts -c copy "魔法科高校の劣等生_来訪者編_9.mp4"
-    rm -f output2.ts
-done
