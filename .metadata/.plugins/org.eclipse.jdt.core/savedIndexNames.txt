@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+/home/kowerkoint/dotfiles/.metadata/.plugins/org.eclipse.jdt.core
+3842426239.index
+988348023.index

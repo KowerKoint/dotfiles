@@ -24,6 +24,8 @@ set wildmode=longest,full
 "LeaderキーをSpaceに設定(これだけでは意味をなさない)
 let mapleader = "\<Space>"
 
+"xでレジスタに入れない
+nnoremap x "_x
 "矢印上下で折り返しを含めた移動
 nnoremap <Down> gj
 nnoremap <Up> gk
@@ -67,15 +69,14 @@ function! Setup()
   let l:no_ext_path = printf("%s/%s", expand("%:h"), expand("%:r"))
   "各言語の実行コマンド
   let g:compile_command_dict = {
-        \'c': printf('gcc -std=gnu11 -O2 -lm -o %s.out %s && %s/%s.out', expand("%:r"), expand("%:p"), expand("%:h"), expand("%:r")),
-        \'cpp': printf('g++ -std=gnu++17 -I/home/kowerkoint/mylib/ac-library -O2 -o %s.out %s && %s/%s.out', expand("%:r"), expand("%:p"), expand("%:h"), expand("%:r")),
-        \'java': printf('javac %s && java %s', expand("%:p"), expand("%:r")),
-        \'cs': printf('mcs -r:System.Numerics -langversion:latest %s && mono %s/%s.exe', expand("%:p"), expand("%:h"), expand("%:r")),
+        \'c': printf('gcc -std=gnu11 -O2 -lm -o %s %s && %s', expand("%:p:r"), expand("%:p"), expand("%:p:r")),
+        \'cpp': printf('g++ -I$HOME/mylib/ac-library -std=gnu++17 -O2 -o %s.out %s && %s.out', expand("%:p:r"), expand("%:p"), expand("%:p:r")),
+        \'java': printf('cd %s && javac %s && java %s', expand("%:p:h"), expand("%:p"), expand("%:t:r")),
         \'python': printf('python3 %s', expand("%:p")),
         \'ruby': printf('ruby %s', expand("%:p")),
         \'javascript': printf('node %s', expand("%:p")),
         \'sh': printf('chmod u+x %s && %s', expand("%:p"), expand("%:p")),
-        \'rust': printf('rustc -A dead_code %s && %s/%s', expand("%:p"), expand("%:h"), expand("%:r"))
+        \'rust': printf('rustc -A dead_code -o %s %s && %s', expand("%:p:r"), expand("%:p"), expand("%:p:r"))
         \}
   "実行コマンド辞書に入ってたら実行キーバインドを設定
   if match(keys(g:compile_command_dict), &filetype) >= 0
@@ -155,7 +156,7 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
 "deinの設定-----------------------https://knowledge.sakura.ad.jp/23248/
-let s:dein_dir = '/home/kowerkoint/.cache/dein'
+let s:dein_dir = printf('%s/.cache/dein', $HOME)
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if &runtimepath !~# '/dein.vim'
@@ -170,7 +171,7 @@ let g:dein#install_github_api_token = 'f02ff55e9c47081941e397d1fcef2f77346b9b5f'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  let s:rc_dir = '/home/kowerkoint/.vim'
+  let s:rc_dir = printf('%s/.vim', $HOME)
   if !isdirectory(s:rc_dir)
     call mkdir(s:rc_dir, 'p')
   endif
