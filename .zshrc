@@ -1,7 +1,11 @@
 source ~/.zplug/init.zsh
 
 function powerline_precmd() {
-  PS1="$(~/.local/bin/powerline-shell --shell zsh $?)"
+  if [ -e "~/.local/bin/powerline-shell" ]; then
+    PS1="$(~/.local/bin/powerline-shell --shell zsh $?)"
+  else
+    PS1="$(/usr/local/bin/powerline-shell --shell zsh $?)"
+  fi
 }
 
 function install_powerline_precmd() {
