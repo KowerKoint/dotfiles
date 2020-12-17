@@ -1,7 +1,9 @@
 source ~/.zplug/init.zsh
 
+export PATH="$HOME/bin:$HOME/go/bin:$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin"
+
 function powerline_precmd() {
-  PS1="$(~/.local/bin/powerline-shell --shell zsh $?)"
+  PS1="$(powerline-shell --shell zsh $?)"
 }
 
 function install_powerline_precmd() {
@@ -72,7 +74,6 @@ man() {
   }
 
 export EDITOR=nvim
-export PATH="$HOME/bin:$HOME/go/bin:$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin"
 
 function mc() {
   mkdir $argv && cd $argv
