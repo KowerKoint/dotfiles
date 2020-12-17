@@ -108,7 +108,7 @@ alias gc='git clone'
 alias agi='sudo apt install'
 alias agr='sudo apt remove'
 alias agu='sudo apt update && sudo apt upgrade'
-alias tweet='tweet.sh post'
+alias atrust='cargo generate --git https://github.com/rust-lang-ja/atcoder-rust-base --branch ja'
 alias e='exit'
 
 function peco-history-selection() {

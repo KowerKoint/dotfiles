@@ -229,7 +229,7 @@ exec --no-startup-id compton
 exec --no-startup-id feh --bg-scale $HOME/.config/i3/wallpaper.jpg
 exec --no-startup-id albert
 exec --no-startup-id i3-msg 'exec xrandr --output eDP-1 --off --output HDMI-1 --mode 1920x1080; workspace 1; layout tabbed; exec /opt/google/chrome/google-chrome --profile-directory=Default --app-id=pbpoojghcbigbheeamegjbdailkaeglf; exec /usr/bin/discord; exec /usr/bin/thunderbird'
-for_window [instance="yakuake" class="yakuake"] floating enable
+for_window [class="^.*"] border pixel 1
 
 # Defining colors
 set $bg      #282A36
