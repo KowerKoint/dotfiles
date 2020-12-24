@@ -1,7 +1,7 @@
 ```
 sudo apt update
 sudo apt upgrade -y
-sudo apt install zsh python3-pip silversearcher-ag neovim npm python2 gem ruby ruby-dev clangd openjdk-11-jdk nkf -y
+sudo apt install zsh python3-pip silversearcher-ag neovim npm python2 gem ruby ruby-dev clangd openjdk-11-jdk nkf peco -y
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 sudo pip3 install --upgrade powerline-shell neovim pynvim msgpack python-language-server
 curl "https://bootstrap.pypa.io/get-pip.py" | python2
@@ -26,7 +26,7 @@ chsh $(whoami)
 
 ```
 yay -Syyu
-yay -S zsh python-pip python2-pip the_silver_searcher neovim npm ruby clang jdk-openjdk nkf lsd wget xclip
+yay -S zsh python-pip python2-pip the_silver_searcher neovim npm ruby clang jdk-openjdk nkf lsd wget xclip peco
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 sudo pip3 install --upgrade powerline-shell neovim pynvim msgpack python-language-server
 sudo npm install -g npm
