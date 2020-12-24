@@ -26,7 +26,7 @@ chsh $(whoami)
 
 ```
 yay -Syyu
-yay -S zsh python-pip python2-pip the_silver_searcher neovim npm ruby clang jdk-openjdk nkf lsd wget
+yay -S zsh python-pip python2-pip the_silver_searcher neovim npm ruby clang jdk-openjdk nkf lsd wget xclip
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 sudo pip3 install --upgrade powerline-shell neovim pynvim msgpack python-language-server
 sudo npm install -g npm
