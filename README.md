@@ -1,6 +1,4 @@
 ```
-#!/usr/bin/bash -eu
-
 sudo apt update
 sudo apt upgrade -y
 sudo apt install zsh python3-pip silversearcher-ag neovim npm python2 gem ruby ruby-dev clangd openjdk-11-jdk nkf -y
@@ -23,7 +21,7 @@ ln -s $(find ~/mylib/jdt-language-server/plugins -name "org.eclipse.equinox.laun
 curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
 rustup component add rls rust-analysis rust-src
-#Finally, run chsh $(whoami)
+chsh $(whoami)
 ```
 
 ```
@@ -43,4 +41,4 @@ ln -s $(find ~/mylib/jdt-language-server/plugins -name "org.eclipse.equinox.laun
 curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
 rustup component add rls rust-analysis rust-src
-#Finally, run chsh $(whoami)
+chsh $(whoami)
