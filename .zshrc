@@ -129,7 +129,7 @@ function peco-cdr () {
   fi
 }
 zle -N peco-cdr
-bindkey '^Q' peco-cdr
+bindkey '^E' peco-cdr
 
 function _pip_completion {
   local words cword
