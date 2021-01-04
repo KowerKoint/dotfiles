@@ -80,7 +80,11 @@ function mc() {
 }
 
 function open() {
-  xdg-open $argv &
+  if [[ -e /proc/sys/fs/binfmt_misc/WSLInterop ]]; then
+    cmd.exe /c start $argv
+  else
+    xdg-open $argv &
+  fi
 }
 
 setopt auto_cd
@@ -100,7 +104,6 @@ function mntusb() {
 
 alias ls='lsd'
 alias ll='lsd -alF'
-alias cat='nkf -w'
 alias ..2='../..'
 alias ..3='../../..'
 alias ..4='../../../..'
