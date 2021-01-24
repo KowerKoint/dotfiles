@@ -273,9 +273,6 @@ colorscheme hybrid
 '''
 
 [[plugins]]
-repo = 'jiangmiao/auto-pairs'
-
-[[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add='''
 "https://qiita.com/arks22/items/9688ec7f4cb43444e9d9
