@@ -76,7 +76,7 @@ function! Setup()
         \'ruby': printf('ruby %s', expand("%:p")),
         \'javascript': printf('node %s', expand("%:p")),
         \'sh': printf('chmod u+x %s && %s', expand("%:p"), expand("%:p")),
-        \'rust': printf('rustc -A dead_code -o %s %s && %s', expand("%:p:r"), expand("%:p"), expand("%:p:r"))
+        \'rust': printf('curgo run')
         \}
   "実行コマンド辞書に入ってたら実行キーバインドを設定
   if match(keys(g:compile_command_dict), &filetype) >= 0
