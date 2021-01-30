@@ -38,6 +38,7 @@ inoremap <silent> <Esc> <Esc>:<C-u>call system('fcitx-remote -c')<CR>
 "新しい行にペーストする
 nnoremap <silent> <C-p> :<C-u>put .<CR>
 
+"Ctrl+SpaceをVimに渡さない
 imap <Nul> <Nop>
 
 "下部分にターミナルウィンドウを作る
