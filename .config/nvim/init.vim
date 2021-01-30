@@ -12,8 +12,6 @@ set softtabstop=2
 set autochdir
 "バッファ内で扱う文字コード
 set encoding=utf-8
-"書き込む文字コード : この場合encodingと同じなので省略可
-set fileencoding=utf-8
 "読み込む文字列 : この場合UTF-8を試し、だめならShift_JIS
 set fileencodings=utf-8,cp932
 "Vimの無名レジスタとシステムのクリップボードを連携 : ダメならxclipをインストールで使えるかも
