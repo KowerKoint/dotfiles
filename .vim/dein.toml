@@ -13,6 +13,10 @@ repo = 'vim-airline/vim-airline'
 [[plugins]]
 repo = 'tpope/vim-surround'
 
+#vim-surroundをドットでリピートできるようにする
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
 #text objectを自己定義
 [[plugins]]
 repo = 'kana/vim-textobj-user'
