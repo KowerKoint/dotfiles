@@ -100,51 +100,6 @@ repo = 'previm/previm'
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-hook_add='''
-set hidden
-let g:LanguageClient_serverCommands = {
-      \ 'c':['clangd'],
-      \ 'cpp':['clangd'],
-      \ 'python':['pyls'],
-      \ 'ruby':['solargraph', 'stdio'],
-      \ 'java':['java',
-      \   '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044',
-      \   '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-      \   '-Dosgi.bundles.defaultStartLevel=4',
-      \   '-Declipse.product=org.eclipse.jdt.ls.core.product',
-      \   '-Dlog.protocol=true',
-      \   '-Dlog.level=ALL',
-      \   '-noverify',
-      \   '-Xmx1G',
-      \   '-jar', '/home/kowerkoint/mylib/org.eclipse.equinox.launcher.jar',
-      \   '-configuration', '/home/kowerkoint/mylib/jdt-language-server/config_linux',
-      \   '-data', getcwd()],
-      \ 'html':['html-languageserver', '--stdio'],
-      \ 'css':['css-languageserver', '--stdio'],
-      \ 'json':['json-languageserver', '--stdio'],
-      \ 'javascript':['javascript-typescript-stdio'],
-      \ 'typescript':['javascript-typescript-stdio'],
-      \ 'tex':['texlab'],
-      \ 'sh':['bash-language-server', 'start'],
-      \ 'rust': ['rustup', 'run', 'stable', 'rls']
-      \ }
-
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient#enable_at_startup = 1
-let g:LanguageClient_loadSettings = 1
-
-nnoremap <leader>K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-'''
-depends = ['deoplete.nvim']
-
-[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
 let g:deoplete#enable_at_startup = 1
@@ -400,3 +355,18 @@ nnoremap <leader>gr :Grebase -i<CR>
 nnoremap <leader>gg :Ggrep 
 nnoremap <leader>gm :Gmerge 
 '''
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
