@@ -1,6 +1,6 @@
 source ~/.zplug/init.zsh
 
-export PATH="$HOME/bin:$HOME/go/bin:$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.rbenv/bin"
+export PATH="$HOME/bin:$HOME/go/bin:$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin"
 
 function powerline_precmd() {
   PS1="$(powerline-shell --shell zsh $?)"
