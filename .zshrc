@@ -114,6 +114,8 @@ alias agr='sudo apt remove'
 alias agu='sudo apt update && sudo apt upgrade'
 alias atrust='cargo generate --git https://github.com/rust-lang-ja/atcoder-rust-base --branch ja'
 alias e='exit'
+alias gp='git add -A && git commit -m "fix" && git push'
+alias gpom='git add -A && git commit -m "fix" && git push origin master'
 
 function peco-history-selection() {
   BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
