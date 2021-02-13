@@ -91,8 +91,6 @@ autocmd BufNewFile,BufRead * Setup
 autocmd FileType c,cpp,java,cs set shiftwidth=4 softtabstop=4
 "Visual Basic .NETのファイルタイプ判別
 autocmd BufNewFile,BufRead *.vb set filetype= vbnet
-"Kotlinのファイルタイプ判別
-autocmd BufNewFile,BufRead *.kt set filetype= kotlin
 "C/C++を開いたときにcompile_flagsをカレントディレクトリに作る
 autocmd FileType c call system(printf('cp -f ~/mylib/compile_flags_c.txt %s/compile_flags.txt', expand("%:h")))
 autocmd FileType cpp call system(printf('cp -f ~/mylib/compile_flags_cpp.txt %s/compile_flags.txt', expand("%:h")))
