@@ -370,3 +370,6 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
+
+[[plugins]]
+repo = 'udalov/kotlin-vim'
