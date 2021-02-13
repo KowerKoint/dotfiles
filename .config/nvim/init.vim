@@ -90,9 +90,9 @@ autocmd BufNewFile,BufRead * Setup
 "コンパイラ言語ではインデントを4マスにする
 autocmd FileType c,cpp,java,cs set shiftwidth=4 softtabstop=4
 "Visual Basic .NETのファイルタイプ判別
-autocmd BufReadPost *.vb setfiletype vbnet
+autocmd BufNewFile,BufRead *.vb set filetype= vbnet
 "Kotlinのファイルタイプ判別
-autocmd BufReadPost *.kt setfiletype kotlin
+autocmd BufNewFile,BufRead *.kt set filetype= kotlin
 "C/C++を開いたときにcompile_flagsをカレントディレクトリに作る
 autocmd FileType c call system(printf('cp -f ~/mylib/compile_flags_c.txt %s/compile_flags.txt', expand("%:h")))
 autocmd FileType cpp call system(printf('cp -f ~/mylib/compile_flags_cpp.txt %s/compile_flags.txt', expand("%:h")))
