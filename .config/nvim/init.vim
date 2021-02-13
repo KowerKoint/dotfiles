@@ -88,7 +88,7 @@ command! Setup call Setup()
 "ファイルを開き直したときに実行コマンドを再設定
 autocmd BufNewFile,BufRead * Setup
 "コンパイラ言語ではインデントを4マスにする
-autocmd FileType c,cpp,java,cs set shiftwidth=4 softtabstop=4
+autocmd FileType c,cpp,java,cs,kotlin set shiftwidth=4 softtabstop=4
 "Visual Basic .NETのファイルタイプ判別
 autocmd BufNewFile,BufRead *.vb set filetype= vbnet
 "C/C++を開いたときにcompile_flagsをカレントディレクトリに作る
