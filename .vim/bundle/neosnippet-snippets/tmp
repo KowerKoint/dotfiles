@@ -1,3 +1,0 @@
-snippet chmax
-abbr chmax(base, ref)
-${1:base} = Math.max(${1}, ${2:ref})${0}
