@@ -2,6 +2,6 @@
 
 for i in $(seq $3 $4); do
   streamlink "$(printf $1 $i)" best -o output.ts
-  ffmpeg -i output.ts -c copy "$(printf $2 $i)"
+  ffmpeg -i output.ts -c copy "$(printf "$2" $i)"
   rm -f output.ts
 done
