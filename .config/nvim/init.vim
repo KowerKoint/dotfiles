@@ -18,6 +18,8 @@ set fileencodings=utf-8,cp932
 set clipboard+=unnamed,unnamedplus
 "eコマンド等でTabキーを押すとパスを保管する : この場合まず最長一致文字列まで保管し、2回目以降は一つづつ試す
 set wildmode=longest,full
+"未保存ファイルが有っても別のファイルを開く
+set hidden
 
 "LeaderキーをSpaceに設定(これだけでは意味をなさない)
 let mapleader = "\<Space>"
