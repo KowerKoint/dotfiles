@@ -74,6 +74,7 @@ man() {
   }
 
 export EDITOR=nvim
+export AC_LIBRARY_RS_HOME="$HOME/mylib/ac-library-rs"
 
 function mc() {
   mkdir $argv && cd $argv
