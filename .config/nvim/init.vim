@@ -116,8 +116,8 @@ vmap sd <Plug>(operator-surround-delete)
 vmap sr <Plug>(operator-surround-replace)
 
 "python3の場所-----------------------
-let g:python_host_prog = '/bin/python2'
-let g:python3_host_prog = '/bin/python3'
+let g:python_host_prog = system('which python2')
+let g:python3_host_prog = system('which python3')
 
 "open-browserの設定------------------
 let g:netrw_nogx = 1
