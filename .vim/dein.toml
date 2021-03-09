@@ -381,12 +381,13 @@ if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.e
       \ 'whitelist': ['java'],
       \ })
 endif
-if executable('rustup') && filereadable(expand('~/.cargo/bin/rls'))
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'rls',
-      \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-      \ 'whitelist': ['rust'],
-      \ })
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
+        \ })
 endif
 '''
 
@@ -415,3 +416,6 @@ repo = 'udalov/kotlin-vim'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
+hook_add='''
+let g:rustfmt_autosave = 1
+'''
