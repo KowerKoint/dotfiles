@@ -116,8 +116,9 @@ vmap sd <Plug>(operator-surround-delete)
 vmap sr <Plug>(operator-surround-replace)
 
 "python3の場所-----------------------
-let g:python_host_prog = system('which python2')
-let g:python3_host_prog = system('which python3')
+let g:python_host_prog = system('echo -n $(which python2)')
+let g:python3_host_prog = system('echo -n $(which python3)')
+let g:ruby_host_prog = system('echo -n $(which neovim-ruby-host)')
 
 "open-browserの設定------------------
 let g:netrw_nogx = 1

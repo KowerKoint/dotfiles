@@ -1,6 +1,6 @@
 source ~/.zplug/init.zsh
 
-export PATH="$HOME/bin:$HOME/go/bin:$PATH:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin:/opt/homebrew/opt/coreutils/libexec/gnubin"
+export PATH="$HOME/bin:$HOME/go/bin:$PATH:$HOME/.local/bin:/usr/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin:/opt/homebrew/opt/coreutils/libexec/gnubin"
 
 function powerline_precmd() {
   PS1="$(powerline-shell --shell zsh $?)"
@@ -198,3 +198,6 @@ elif type compctl &>/dev/null; then
   }
   compctl -K _npm_completion npm
 fi
+
+eval "$(pyenv init -)"
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
