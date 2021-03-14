@@ -1,7 +1,8 @@
-source ~/.zplug/init.zsh
+#PATHを入れまくる
+export PATH="$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:/usr/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/llvm/bin"
 
-export PATH="$HOME/bin:$HOME/go/bin:$PATH:$HOME/.local/bin:/usr/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/llvm/bin"
-
+#powerline:ターミナルの見た目
+#https://github.com/b-ryan/powerline-shell
 function powerline_precmd() {
   PS1="$(powerline-shell --shell zsh $?)"
 }
@@ -19,8 +20,19 @@ if [ "$TERM" != "linux" ]; then
   install_powerline_precmd
 fi 
 
+
+#zplug(Zshのプラグインインストーラ)
+#https://github.com/zplug/zplug
+source ~/.zplug/init.zsh
+
+#シンタックスハイライト
+#https://github.com/zsh-users/zsh-syntax-highlighting
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+#Tab補完をめっちゃ強くする
+#https://github.com/zsh-users/zsh-completions
 zplug "zsh-users/zsh-completions"
+#雑なcdを通す
+#https://github.com/b4b4r07/enhancd
 zplug "b4b4r07/enhancd", use:init.sh
 
 if ! zplug check --verbose; then
@@ -31,6 +43,7 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
+#enhancdの設定(検索用コマンドにpecoを使用)
 export ENHANCD_FILTER=peco
 export ENHANCD_DISABLE_DOT=1
 export ENHANCD_DISABLE_HOME=1
