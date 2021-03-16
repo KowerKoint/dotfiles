@@ -20,7 +20,6 @@ if [ "$TERM" != "linux" ]; then
   install_powerline_precmd
 fi 
 
-
 #zplug(Zshのプラグインインストーラ)
 #https://github.com/zplug/zplug
 source ~/.zplug/init.zsh
@@ -35,6 +34,7 @@ zplug "zsh-users/zsh-completions"
 #https://github.com/b4b4r07/enhancd
 zplug "b4b4r07/enhancd", use:init.sh
 
+#起動時にzplugの未インストールプラグイン確認
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
@@ -43,18 +43,20 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
-#enhancdの設定(検索用コマンドにpecoを使用)
-export ENHANCD_FILTER=peco
-export ENHANCD_DISABLE_DOT=1
-export ENHANCD_DISABLE_HOME=1
+#enhancdの設定
+export ENHANCD_FILTER=peco #検索機能はpecoを使用
+export ENHANCD_DISABLE_DOT=1 #"cd .."の挙動は通常通りにする
+export ENHANCD_DISABLE_HOME=1 #"cd"の挙動は通常通りにする
 
+#コマンド履歴を保存
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=1000000
 
-setopt inc_append_history
-setopt share_history
+setopt inc_append_history #履歴をインクリメンタルに追加する
+setopt share_history #コマンド履歴を他セッションと共有
 
+#cdrコマンドの設定 よくわからん
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
   autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
   add-zsh-hook chpwd chpwd_recent_dirs
@@ -64,6 +66,7 @@ if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]
   zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
 fi
 
+#色の設定 よくわからん
 eval `dircolors -b`
 eval `dircolors ${HOME}/.dircolors`
 
@@ -86,13 +89,16 @@ man() {
     man "$@"
   }
 
+#環境変数
 export EDITOR=nvim
 export AC_LIBRARY_RS_HOME="$HOME/mylib/ac-library-rs"
 
+#mkdirとcdを一度に行う関数
 function mc() {
   mkdir $argv && cd $argv
 }
 
+#デフォルトのアプリで開く WSLの場合はWindows側で開く
 function open() {
   if [[ -e /proc/sys/fs/binfmt_misc/WSLInterop ]]; then
     cmd.exe /c start $argv
@@ -101,12 +107,14 @@ function open() {
   fi
 }
 
-setopt auto_cd
+setopt auto_cd #ディレクトリ名を直接打つだけでcdする
 
+#コマンドのスクリプトをnvimで開く
 function cmdedit() {
   nvim $(which $argv)
 }
 
+#LinuxでUSBメモリをマウントする
 function mntusb() {
   local name=$(whoami)
   local usb=/media/$name/usb
@@ -116,6 +124,7 @@ function mntusb() {
   sudo mount -w -o uid=$name,iocharset=utf8 $argv $usb
 }
 
+#我がメチャクチャなエイリアス集！
 alias ls='lsd'
 alias ll='lsd -alF'
 alias ..2='../..'
@@ -126,11 +135,11 @@ alias gc='git clone'
 alias agi='sudo apt install'
 alias agr='sudo apt remove'
 alias agu='sudo apt update && sudo apt upgrade'
-alias atrust='cargo generate --git https://github.com/rust-lang-ja/atcoder-rust-base --branch ja'
 alias e='exit'
 alias gp='git add -A && git commit -m "fix" && git push'
 alias gpom='git add -A && git commit -m "fix" && git push origin master'
 
+#Ctrl+Rでコマンドの履歴を検索できる
 function peco-history-selection() {
   BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
   CURSOR=$#BUFFER
@@ -140,16 +149,26 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
-function peco-cdr () {
-  local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")"
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
+#Ctrl+Xで過去の移動したディレクトリを検索できる
+function peco-get-destination-from-cdr() {
+  cdr -l | \
+  sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
+  peco --query "$LBUFFER"
+}
+
+function peco-cdr() {
+  local destination="$(peco-get-destination-from-cdr)"
+  if [ -n "$destination" ]; then
+    BUFFER="cd $destination"
     zle accept-line
+  else
+    zle reset-prompt
   fi
 }
 zle -N peco-cdr
-bindkey '^E' peco-cdr
+bindkey '^x' peco-cdr
 
+#pipの補完
 function _pip_completion {
   local words cword
   read -Ac words
@@ -160,6 +179,7 @@ function _pip_completion {
 }
 compctl -K _pip_completion pip3
 
+#npmの補完
 if type complete &>/dev/null; then
   _npm_completion () {
     local words cword
