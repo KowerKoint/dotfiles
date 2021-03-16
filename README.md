@@ -11,7 +11,7 @@ wget "https://github.com/Peltoche/lsd/releases/download/0.19.0/lsd_0.19.0_amd64.
 sudo dpkg -i lsd_0.19.0_amd64.deb
 rm -rf lsd_0.19.0_amd64.deb
 git clone https://github.com/KowerKoint/dotfiles
-~/dotfiles/.bin/install2.sh
+~/dotfiles/.bin/install.sh
 wget https://github.com/latex-lsp/texlab/releases/download/v2.2.0/texlab-x86_64-linux.tar.gz
 tar -xvf texlab-x86_64-linux.tar.gz -o -C ~/mylib
 rm -rf texlab-x86_64-linux.tar.gz
@@ -31,7 +31,7 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 sudo pip3 install --upgrade powerline-shell neovim pynvim msgpack python-language-server
 sudo npm install -g npm
 sudo npm install -g neovim vscode-html-languageserver-bin vscode-css-languageserver-bin vscode-json-languageserver-bin javascript-typescript-langserver bash-language-server
-~/dotfiles/.bin/install2.sh
+~/dotfiles/.bin/install.sh
 wget https://github.com/latex-lsp/texlab/releases/download/v2.2.0/texlab-x86_64-linux.tar.gz
 tar -xvf texlab-x86_64-linux.tar.gz -o -C ~/mylib
 rm -rf texlab-x86_64-linux.tar.gz
