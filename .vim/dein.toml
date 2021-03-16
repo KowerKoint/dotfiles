@@ -37,12 +37,11 @@ repo = 'kana/vim-textobj-line'
 [[plugins]]
 repo = 'kana/vim-textobj-function'
 
-#iz or azで折りたたみ
-
 #iu or auでURL
 [[plugins]]
 repo = 'mattn/vim-textobj-url'
 
+#任意の一文字の間
 #if~で~~の中身など
 #af~で~~を含めた全体など
 [[plugins]]
@@ -63,7 +62,7 @@ repo = 'RyanMcG/vim-textobj-dash'
 [[plutins]]
 repo = 'rhysd/vim-textobj-ruby'
 
-#i,wで単語内単語
+#i,wでキャメルケース、スネークケース等の単語内単語
 [[plugins]]
 repo = 'h1mesuke/textobj-wiw'
 
@@ -80,50 +79,34 @@ hook_add = '''
 let g:vim_textobj_parameter_mapping = '.'
 '''
 
-
+#operatorを追加定義
 [[plugins]]
 repo = 'kana/vim-operator-user'
 
+#Rでレジスタの中身と入れ替え
 [[plugins]]
 repo = 'kana/vim-operator-replace'
 
+#sa{textobj}{カッコ等の囲み}で囲みを追加
+#sd{textobj}{カッコ等の囲み}で囲みを削除
+#sr{textobj}{囲み1}{囲み2}で囲みを変更
 [[plugins]]
 repo = 'rhysd/vim-operator-surround'
 
+#Ctrl+Eでresizeモードに入り、hjklでウィンドウの大きさを変える
 [[plugins]]
 repo = 'simeji/winresizer'
 
+#Markdownのプレビュー
 [[plugins]]
 repo = 'previm/previm'
 
+#URLをブラウザで開くなど previmとの連携もある
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-let g:deoplete#enable_at_startup = 1
-
-"Tab補完の設定
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~ '\s'
-endfunction
-
-"Shift+Tabで前の補完候補へ
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return deoplete#close_popup() . "\<CR>"
-endfunction
-'''
-
+#ファイル検索ツール
+#使いこなせたら強いんだろうなー…
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
@@ -170,12 +153,15 @@ call denite#custom#var('grep', {
       \ })
 '''
 
+#Denite関連
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 
+#Denite関連
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
 
+#スニペット
 [[plugins]]
 repo = 'Shougo/neosnippet'
 hook_add = '''
@@ -187,9 +173,11 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/
 let g:neosnippet#enable_complete_done=1
 '''
 
+#neosnippet用の汎用snippet
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
+#高速移動ツール
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion'
 hook_add = '''
@@ -202,28 +190,26 @@ map F <Plug>(easymotion-Fl)
 map T <Plug>(easymotion-Tl)
 '''
 
+#filetypeの自動判別
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
+#ヘルプの日本語化
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
+#Visual Basic用のシンタックスなど
 [[plugins]]
 repo = 'hachibeeDI/vim-vbnet'
 
-[[plugins]]
-repo = 'ghifarit53/tokyonight-vim'
-hook_add='''
-let g:tokyonight_enable_italic = 1
-"colorscheme tokyonight
-'''
-
+#対応するカッコ同士で色分けする
 [[plugins]]
 repo = 'luochen1990/rainbow'
 hook_add='''
 let g:rainbow_active = 1
 '''
 
+#いい感じのテーマ
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
 hook_add='''
@@ -231,6 +217,7 @@ set background=dark
 colorscheme hybrid
 '''
 
+#ファイラー
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add='''
@@ -324,21 +311,26 @@ autocmd BufWritePost * call defx#redraw()
 autocmd BufEnter * call defx#redraw()
 '''
 
+#Nerd Fontでかっこいいアイコンを付ける
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
+#defxにファイルタイプ別のアイコンを付ける
 [[plugins]]
 repo = 'kristijanhusak/defx-icons'
 
+#関数等のタグ付け・ジャンプができるウィンドウ
 [[plugins]]
 repo = 'preservim/tagbar'
 hook_add='''
   nnoremap <F8> :TagbarToggle<CR>
 '''
 
+#Gitの差分を表示
 [[plugins]]
 repo = "airblade/vim-gitgutter"
 
+#Gitの操作をVim上でやる
 [[plugins]]
 repo = "tpope/vim-fugitive"
 hook_add='''
@@ -356,31 +348,11 @@ nnoremap <leader>gg :Ggrep
 nnoremap <leader>gm :Gmerge 
 '''
 
+#LSP(言語ごとのリント、補完等ができるようになる)
+#IDE化の要
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add='''
-if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar'))
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'eclipse.jdt.ls',
-      \ 'cmd': {server_info->[
-      \     'java',
-      \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-      \     '-Dosgi.bundles.defaultStartLevel=4',
-      \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-      \     '-Dlog.level=ALL',
-      \     '-noverify',
-      \     '-Dfile.encoding=UTF-8',
-      \     '-Xmx1G',
-      \     '-jar',
-      \     expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.600.v20191014-2022.jar'),
-      \     '-configuration',
-      \     expand('~/lsp/eclipse.jdt.ls/config_linux'),
-      \     '-data',
-      \     getcwd()
-      \ ]},
-      \ 'whitelist': ['java'],
-      \ })
-endif
 if executable('rls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'rls',
@@ -391,29 +363,47 @@ if executable('rls')
 endif
 '''
 
+#:LspInstallServerで開いてる言語のLSPを自動インストールする
+#C/C++のclangdとかRubyのsolargraphとかRustのrlsとかは自分で入れないといけないかも
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 
+#高速な非同期処理を定義
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
 
+#非同期処理の高速な補完ツール
+#これがないと始まらない
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
 hook_add='''
+let g:asyncomplete_auto_popup = 0
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ asyncomplete#force_refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 let g:asyncomplete_remove_duplicates = 1
 let g:asyncomplete_smart_completion = 1
 let g:asyncomplete_auto_popup = 1
 '''
 
+#vim-lspをasyncompleteに反映
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
-
+#Kotlinのシンタックスハイライト
 [[plugins]]
 repo = 'udalov/kotlin-vim'
 
+#Rustの自動フォーマット
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 hook_add='''

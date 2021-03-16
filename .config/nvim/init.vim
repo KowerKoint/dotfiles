@@ -64,31 +64,6 @@ nnoremap <C-t> <C-w>ji
 "ターミナル挿入モードからターミナルモードへ以降
 tnoremap <Esc> <C-\><C-n>
 
-"ファイルタイプごとにコンパイル/実行コマンドを定義
-function! Setup()
-  "フルパスから拡張子を除いたもの
-  let l:no_ext_path = printf("%s/%s", expand("%:h"), expand("%:r"))
-  "各言語の実行コマンド
-  let g:compile_command_dict = {
-        \'c': printf('gcc -std=gnu11 -O2 -lm -o %s %s && %s', expand("%:p:r"), expand("%:p"), expand("%:p:r")),
-        \'cpp': printf('g++ -I$HOME/mylib/ac-library -std=gnu++17 -O2 -o %s.out %s && %s.out', expand("%:p:r"), expand("%:p"), expand("%:p:r")),
-        \'java': printf('cd %s && javac %s && java %s', expand("%:p:h"), expand("%:p"), expand("%:t:r")),
-        \'python': printf('python3 %s', expand("%:p")),
-        \'ruby': printf('ruby %s', expand("%:p")),
-        \'javascript': printf('node %s', expand("%:p")),
-        \'sh': printf('chmod u+x %s && %s', expand("%:p"), expand("%:p")),
-        \'rust': printf('cargo run')
-        \}
-  "実行コマンド辞書に入ってたら実行キーバインドを設定
-  if match(keys(g:compile_command_dict), &filetype) >= 0
-    "下ウィンドウがターミナルであることを前提としている
-    nnoremap <expr> <F5> '<C-w>ji<C-u>' . g:compile_command_dict[&filetype] . '<CR>'
-  endif
-endfunction
-command! Setup call Setup()
-
-"ファイルを開き直したときに実行コマンドを再設定
-autocmd BufNewFile,BufRead * Setup
 "コンパイラ言語ではインデントを4マスにする
 autocmd FileType c,cpp,java,cs,kotlin set shiftwidth=4 softtabstop=4
 "Visual Basic .NETのファイルタイプ判別
@@ -115,7 +90,7 @@ vmap sa <Plug>(operator-surround-append)
 vmap sd <Plug>(operator-surround-delete)
 vmap sr <Plug>(operator-surround-replace)
 
-"python3の場所-----------------------
+"pythonとRubyの場所-----------------------
 let g:python_host_prog = system('echo -n $(which python2)')
 let g:python3_host_prog = system('echo -n $(which python3)')
 let g:ruby_host_prog = system('echo -n $(which neovim-ruby-host)')
