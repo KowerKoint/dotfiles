@@ -1,4 +1,4 @@
-"行番号を表示
+g行番号を表示
 set number
 "タブ文字の代わりにスペースを使う
 set expandtab
@@ -72,33 +72,10 @@ autocmd BufNewFile,BufRead *.vb set filetype= vbnet
 autocmd FileType c call system(printf('cp -f ~/mylib/compile_flags_c.txt %s/compile_flags.txt', expand("%:h")))
 autocmd FileType cpp call system(printf('cp -f ~/mylib/compile_flags_cpp.txt %s/compile_flags.txt', expand("%:h")))
 
-"textobj-userの衝突回避---------------
-omap iF <Plug>(textobj-function-i)
-omap aF <Plug>(textobj-function-a)
-vmap iF <Plug>(textobj-function-i)
-vmap aF <Plug>(textobj-function-a)
-
-"vim-operator-replaceの設定---------
-nmap R <Plug>(operator-replace)
-nmap R <Plug>(operator-replace)
-
-"vim-operator-surroundの設定---------
-nmap sa <Plug>(operator-surround-append)
-nmap sd <Plug>(operator-surround-delete)
-nmap sr <Plug>(operator-surround-replace)
-vmap sa <Plug>(operator-surround-append)
-vmap sd <Plug>(operator-surround-delete)
-vmap sr <Plug>(operator-surround-replace)
-
 "pythonとRubyの場所-----------------------
 let g:python_host_prog = system('echo -n $(which python2)')
 let g:python3_host_prog = system('echo -n $(which python3)')
 let g:ruby_host_prog = system('echo -n $(which neovim-ruby-host)')
-
-"open-browserの設定------------------
-let g:netrw_nogx = 1
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
 
 "deinの設定-----------------------https://knowledge.sakura.ad.jp/23248/
 let s:dein_dir = expand('~/.cache/dein')

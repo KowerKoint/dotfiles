@@ -36,6 +36,12 @@ repo = 'kana/vim-textobj-line'
 #init.vimで再定義中
 [[plugins]]
 repo = 'kana/vim-textobj-function'
+hook_add='''
+omap iF <Plug>(textobj-function-i)
+omap aF <Plug>(textobj-function-a)
+vmap iF <Plug>(textobj-function-i)
+vmap aF <Plug>(textobj-function-a)
+'''
 
 #iu or auでURL
 [[plugins]]
@@ -86,12 +92,24 @@ repo = 'kana/vim-operator-user'
 #Rでレジスタの中身と入れ替え
 [[plugins]]
 repo = 'kana/vim-operator-replace'
+hook_add='''
+nmap R <Plug>(operator-replace)
+nmap R <Plug>(operator-replace)
+'''
 
 #sa{textobj}{カッコ等の囲み}で囲みを追加
 #sd{textobj}{カッコ等の囲み}で囲みを削除
 #sr{textobj}{囲み1}{囲み2}で囲みを変更
 [[plugins]]
 repo = 'rhysd/vim-operator-surround'
+hook_add='''
+nmap sa <Plug>(operator-surround-append)
+nmap sd <Plug>(operator-surround-delete)
+nmap sr <Plug>(operator-surround-replace)
+vmap sa <Plug>(operator-surround-append)
+vmap sd <Plug>(operator-surround-delete)
+vmap sr <Plug>(operator-surround-replace)
+'''
 
 #Ctrl+Eでresizeモードに入り、hjklでウィンドウの大きさを変える
 [[plugins]]
@@ -104,6 +122,11 @@ repo = 'previm/previm'
 #URLをブラウザで開くなど previmとの連携もある
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+hook_add='''
+let g:netrw_nogx = 1
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+'''
 
 #ファイル検索ツール
 #使いこなせたら強いんだろうなー…
