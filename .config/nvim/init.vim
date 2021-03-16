@@ -1,4 +1,4 @@
-g行番号を表示
+"行番号を表示
 set number
 "タブ文字の代わりにスペースを使う
 set expandtab
