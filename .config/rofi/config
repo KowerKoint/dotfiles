@@ -1,7 +1,0 @@
-rofi.medi: window,drun,system:~/.config/rofi/rofi_system.sh
-rofi.sidebar-mode:t true
-rofi.hide-scrollbar: true
-rofi.kb-cancel: Escape,Control+bracketleft
-rofi.kb-mode-previous: Alt+u
-rofi.kb-mode-next: Alt+i
-rofi.theme: /usr/share/rofi/themes/Monokai.rasi
