@@ -384,6 +384,13 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
+if executable('haskell-language-server-8.10.2')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'hie',
+        \ 'cmd': {server_info->['haskell-language-server-8.10.2']},
+        \ 'whitelist': ['haskell'],
+        \ })
+endif
 '''
 
 #:LspInstallServerで開いてる言語のLSPを自動インストールする
