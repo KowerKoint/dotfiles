@@ -231,3 +231,4 @@ elif type compctl &>/dev/null; then
   }
   compctl -K _npm_completion npm
 fi
+[ -f "/Users/kointkower/.ghcup/env" ] && source "/Users/kointkower/.ghcup/env" # ghcup-env
