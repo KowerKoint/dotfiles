@@ -1,5 +1,5 @@
 #PATHを入れまくる
-  export PATH="/opt/homebrew/opt/python3/libexec/bin:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:/usr/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/llvm/bin"
+export PATH="/opt/homebrew/opt/python3/libexec/bin:/opt/homebrew/bin:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:/usr/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/llvm/bin"
 
 #powerline:ターミナルの見た目
 #https://github.com/b-ryan/powerline-shell
