@@ -391,6 +391,13 @@ if executable('haskell-language-server-8.10.2')
         \ 'whitelist': ['haskell'],
         \ })
 endif
+if executable('html-languageserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'html-lang',
+        \ 'cmd': {server_info->['html-languageserver', '--stdio']},
+        \ 'whitelist': ['html'],
+        \ })
+endif
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
