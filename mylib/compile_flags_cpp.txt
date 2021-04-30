@@ -1,3 +1,4 @@
 -std=gnu++17
 -I/home/kowerkoint/mylib/ac-library
+-I/Users/kointkower/CompPro-Workspace/library
 -I/usr/local/include
