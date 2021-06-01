@@ -1,5 +1,5 @@
 #PATHを入れまくる
-export PATH="/opt/homebrew/opt/python3/libexec/bin:/opt/homebrew/bin:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:/usr/bin:/usr/local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/llvm/bin"
+export PATH="$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin"
 
 #powerline:ターミナルの見た目
 #https://github.com/b-ryan/powerline-shell
@@ -91,7 +91,6 @@ man() {
 
 #環境変数
 export EDITOR=nvim
-export AC_LIBRARY_RS_HOME="$HOME/mylib/ac-library-rs"
 
 #mkdirとcdを一度に行う関数
 function mc() {
@@ -114,16 +113,6 @@ function cmdedit() {
   nvim $(which $argv)
 }
 
-#LinuxでUSBメモリをマウントする
-function mntusb() {
-  local name=$(whoami)
-  local usb=/media/$name/usb
-  if [ ! -e $usb ]; then
-    sudo mkdir $usb
-  fi
-  sudo mount -w -o uid=$name,iocharset=utf8 $argv $usb
-}
-
 #我がメチャクチャなエイリアス集！
 alias ls='lsd'
 alias ll='lsd -alF'
@@ -136,8 +125,6 @@ alias agi='sudo apt install'
 alias agr='sudo apt remove'
 alias agu='sudo apt update && sudo apt upgrade'
 alias e='exit'
-alias gp='git add -A && git commit -m "fix" && git push'
-alias gpom='git add -A && git commit -m "fix" && git push origin master'
 
 #Ctrl+Rでコマンドの履歴を検索できる
 function peco-history-selection() {
@@ -231,4 +218,3 @@ elif type compctl &>/dev/null; then
   }
   compctl -K _npm_completion npm
 fi
-[ -f "/Users/kointkower/.ghcup/env" ] && source "/Users/kointkower/.ghcup/env" # ghcup-env
