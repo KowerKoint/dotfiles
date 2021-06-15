@@ -1,6 +1,17 @@
 #PATHを入れまくる
 export PATH="$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.7.0/bin"
 
+#WSL独自
+if [[ "$(uname -r)" == *microsoft* ]]; then
+  fix_wsl2_interop() {
+      for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
+          if [[ -e "/run/WSL/${i}_interop" ]]; then
+              export WSL_INTEROP=/run/WSL/${i}_interop
+          fi
+      done
+  }
+fi
+
 #powerline:ターミナルの見た目
 #https://github.com/b-ryan/powerline-shell
 function powerline_precmd() {
