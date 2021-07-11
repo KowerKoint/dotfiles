@@ -69,6 +69,14 @@ autocmd FileType c,cpp,java,cs,kotlin set shiftwidth=4 softtabstop=4
 "Visual Basic .NETのファイルタイプ判別
 autocmd BufNewFile,BufRead *.vb set filetype= vbnet
 
+"WSLのクリップボード連携
+if system('uname -a | grep microsoft') != ''
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe', @")
+  augroup END
+endif
+
 "pythonとRubyの場所-----------------------
 let g:python_host_prog = system('echo -n $(which python2)')
 let g:python3_host_prog = system('echo -n $(which python3)')
