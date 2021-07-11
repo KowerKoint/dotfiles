@@ -10,6 +10,7 @@ if [[ "$(uname -r)" == *microsoft* ]]; then
           fi
       done
   }
+  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 fi
 
 #powerline:ターミナルの見た目
