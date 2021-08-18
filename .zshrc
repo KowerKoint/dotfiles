@@ -102,6 +102,7 @@ man() {
   }
 
 #環境変数
+export BROWSER=firefox
 export EDITOR=nvim
 
 #mkdirとcdを一度に行う関数
