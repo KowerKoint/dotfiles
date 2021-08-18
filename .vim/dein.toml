@@ -318,7 +318,6 @@ function MyDefx() abort
   wincmd l
 endfunction
 
-autocmd VimEnter * call MyDefx()
 nnoremap <silent> <Leader>f :<C-u>Defx<CR>
 call defx#custom#option('_', {
       \ 'winwidth': 25,
