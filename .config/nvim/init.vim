@@ -24,6 +24,8 @@ set hidden
 "LeaderキーをSpaceに設定(これだけでは意味をなさない)
 let mapleader = "\<Space>"
 
+"jj
+inoremap jj <Esc>
 "xでレジスタに入れない
 nnoremap x "_x
 "矢印上下で折り返しを含めた移動
@@ -96,10 +98,19 @@ if dein#load_state(s:dein_dir)
     call mkdir(s:rc_dir, 'p')
   endif
   let s:toml = s:rc_dir . '/dein.toml'
-  let s:lazy_toml = s:rc_dir . '/dein_lazy.toml'
+  "let s:lazy_toml = s:rc_dir . '/dein_lazy.toml'
+  let s:w_vsc_toml = s:rc_dir . '/dein_with_vscode.toml'
+  let s:wo_vsc_toml = s:rc_dir . '/dein_without_vscode.toml'
 
   call dein#load_toml(s:toml, {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy' : 1})
+  "call dein#load_toml(s:lazy_toml, {'lazy' : 1})
+
+  if exists('g:vscode')
+    " vscodeの場合こちらのプラグインを利用
+    call dein#load_toml(s:w_vsc_toml, {'lazy':0})
+  else
+    call dein#load_toml(s:wo_vsc_toml, {'lazy':0})
+  endif
 
   call dein#end()
   call dein#save_state()
