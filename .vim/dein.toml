@@ -1,3 +1,32 @@
+#高速移動
+#vscodeありなしでプラグインが変わる
+
+[[plugins]]
+repo = 'asvetliakov/vim-easymotion'
+if = 'exists("g:vscode")'
+hook_add = '''
+nmap s <Plug>(easymotion-s2)
+xmap s <Plug>(easymotion-s2)
+omap z <Plug>(easymotion-s2)
+map f <Plug>(easymotion-fl)
+map t <Plug>(easymotion-tl)
+map F <Plug>(easymotion-Fl)
+map T <Plug>(easymotion-Tl)
+'''
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+if = '!exists("g:vscode")'
+hook_add = '''
+nmap s <Plug>(easymotion-s2)
+xmap s <Plug>(easymotion-s2)
+omap z <Plug>(easymotion-s2)
+map f <Plug>(easymotion-fl)
+map t <Plug>(easymotion-tl)
+map F <Plug>(easymotion-Fl)
+map T <Plug>(easymotion-Tl)
+'''
+
 #置換結果をリアルタイム表示
 [[plugins]]
 repo = 'markonm/traces.vim'
@@ -115,20 +144,24 @@ repo = 'tpope/vim-commentary'
 #ステータスバーの見た目変更
 [[plugins]]
 repo = 'vim-airline/vim-airline'
+if = '!exists("g:vscode")'
 
 #Ctrl+Eでresizeモードに入り、hjklでウィンドウの大きさを変える
 [[plugins]]
 repo = 'simeji/winresizer'
+if = '!exists("g:vscode")'
 
 #Markdownのプレビュー
 [[plugins]]
 repo = 'previm/previm'
+if = '!exists("g:vscode")'
 
 #ファイル検索ツール
 #使いこなせたら強いんだろうなー…
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-hook_add = '''
+if = '!exists("g:vscode")'
+hook_source = '''
 nmap <silent> ,f :<C-u>Denite file/rec<CR>
 nmap <silent> ,g :<C-u>Denite grep<CR>
 nmap <silent> ,b :<C-u>Denite buffer<CR>
@@ -175,14 +208,17 @@ call denite#custom#var('grep', {
 #Denite関連
 [[plugins]]
 repo = 'Shougo/neomru.vim'
+if = '!exists("g:vscode")'
 
 #Denite関連
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
+if = '!exists("g:vscode")'
 
 #スニペット
 [[plugins]]
 repo = 'Shougo/neosnippet'
+if = '!exists("g:vscode")'
 hook_add = '''
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -195,18 +231,22 @@ let g:neosnippet#enable_complete_done=1
 #neosnippet用の汎用snippet
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+if = '!exists("g:vscode")'
 
 #filetypeの自動判別
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+if = '!exists("g:vscode")'
 
 #Visual Basic用のシンタックスなど
 [[plugins]]
 repo = 'hachibeeDI/vim-vbnet'
+if = '!exists("g:vscode")'
 
 #対応するカッコ同士で色分けする
 [[plugins]]
 repo = 'luochen1990/rainbow'
+if = '!exists("g:vscode")'
 hook_add='''
 let g:rainbow_active = 1
 '''
@@ -214,7 +254,8 @@ let g:rainbow_active = 1
 #いい感じのテーマ
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
-hook_add='''
+if = '!exists("g:vscode")'
+hook_source='''
 set background=dark
 colorscheme hybrid
 '''
@@ -222,7 +263,8 @@ colorscheme hybrid
 #ファイラー
 [[plugins]]
 repo = 'Shougo/defx.nvim'
-hook_add='''
+if = '!exists("g:vscode")'
+hook_source='''
 "https://qiita.com/arks22/items/9688ec7f4cb43444e9d9
 autocmd FileType defx call s:defx_my_settings()
 
@@ -315,14 +357,17 @@ autocmd BufEnter * call defx#redraw()
 #Nerd Fontでかっこいいアイコンを付ける
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
+if = '!exists("g:vscode")'
 
 #defxにファイルタイプ別のアイコンを付ける
 [[plugins]]
 repo = 'kristijanhusak/defx-icons'
+if = '!exists("g:vscode")'
 
 #関数等のタグ付け・ジャンプができるウィンドウ
 [[plugins]]
 repo = 'preservim/tagbar'
+if = '!exists("g:vscode")'
 hook_add='''
   nnoremap <F8> :TagbarToggle<CR>
 '''
@@ -330,10 +375,12 @@ hook_add='''
 #Gitの差分を表示
 [[plugins]]
 repo = "airblade/vim-gitgutter"
+if = '!exists("g:vscode")'
 
 #Gitの操作をVim上でやる
 [[plugins]]
 repo = "tpope/vim-fugitive"
+if = '!exists("g:vscode")'
 hook_add='''
 nnoremap <leader>gs :tab sp<CR>:Gstatus<CR>:only<CR>
 nnoremap <leader>ga :Gwrite<CR>
@@ -353,6 +400,7 @@ nnoremap <leader>gm :Gmerge
 #IDE化の要
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+if = '!exists("g:vscode")'
 hook_add='''
 if executable('rls')
     au User lsp_setup call lsp#register_server({
@@ -410,15 +458,18 @@ augroup END
 #C/C++のclangdとかRubyのsolargraphとかRustのrlsとかは自分で入れないといけないかも
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+if = '!exists("g:vscode")'
 
 #高速な非同期処理を定義
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
+if = '!exists("g:vscode")'
 
 #非同期処理の高速な補完ツール
 #これがないと始まらない
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
+if = '!exists("g:vscode")'
 hook_add='''
 let g:asyncomplete_auto_popup = 0
 
@@ -441,14 +492,17 @@ let g:asyncomplete_auto_popup = 1
 #vim-lspをasyncompleteに反映
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
+if = '!exists("g:vscode")'
 
 #Kotlinのシンタックスハイライト
 [[plugins]]
 repo = 'udalov/kotlin-vim'
+if = '!exists("g:vscode")'
 
 #Rustの自動フォーマット
 [[plugins]]
 repo = 'rust-lang/rust.vim'
+if = '!exists("g:vscode")'
 hook_add='''
 let g:rustfmt_autosave = 1
 '''
