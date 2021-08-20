@@ -98,19 +98,24 @@ if dein#load_state(s:dein_dir)
     call mkdir(s:rc_dir, 'p')
   endif
   let s:toml = s:rc_dir . '/dein.toml'
-  "let s:lazy_toml = s:rc_dir . '/dein_lazy.toml'
-  let s:w_vsc_toml = s:rc_dir . '/dein_with_vscode.toml'
-  let s:wo_vsc_toml = s:rc_dir . '/dein_without_vscode.toml'
+  let s:lazy_toml = s:rc_dir . '/dein_lazy.toml'
 
   call dein#load_toml(s:toml, {'lazy': 0})
   "call dein#load_toml(s:lazy_toml, {'lazy' : 1})
-
-  if exists('g:vscode')
-    " vscodeの場合こちらのプラグインを利用
-    call dein#load_toml(s:w_vsc_toml, {'lazy':0})
+  
+  if exists("g:vscode")
+    call dein#add('asvetiliakov/vim-easymotion')
   else
-    call dein#load_toml(s:wo_vsc_toml, {'lazy':0})
+    call dein#add('easymotion/vim-easymotion')
   endif
+
+  nmap s <Plug>(easymotion-s2)
+  xmap s <Plug>(easymotion-s2)
+  omap z <Plug>(easymotion-s2)
+  map f <Plug>(easymotion-fl)
+  map t <Plug>(easymotion-tl)
+  map F <Plug>(easymotion-Fl)
+  map T <Plug>(easymotion-Tl)
 
   call dein#end()
   call dein#save_state()
