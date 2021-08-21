@@ -1,3 +1,7 @@
+#dein自身も管理
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
 #高速移動
 #vscodeありなしでプラグインが変わる
 
