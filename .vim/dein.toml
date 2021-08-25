@@ -2,35 +2,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-#高速移動
-#vscodeありなしでプラグインが変わる
-
-[[plugins]]
-repo = 'asvetliakov/vim-easymotion'
-if = 'exists("g:vscode")'
-hook_add = '''
-nmap s <Plug>(easymotion-s2)
-xmap s <Plug>(easymotion-s2)
-omap z <Plug>(easymotion-s2)
-map f <Plug>(easymotion-fl)
-map t <Plug>(easymotion-tl)
-map F <Plug>(easymotion-Fl)
-map T <Plug>(easymotion-Tl)
-'''
-
-[[plugins]]
-repo = 'easymotion/vim-easymotion'
-if = '!exists("g:vscode")'
-hook_add = '''
-nmap s <Plug>(easymotion-s2)
-xmap s <Plug>(easymotion-s2)
-omap z <Plug>(easymotion-s2)
-map f <Plug>(easymotion-fl)
-map t <Plug>(easymotion-tl)
-map F <Plug>(easymotion-Fl)
-map T <Plug>(easymotion-Tl)
-'''
-
 #置換結果をリアルタイム表示
 [[plugins]]
 repo = 'markonm/traces.vim'
