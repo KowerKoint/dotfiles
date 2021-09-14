@@ -299,7 +299,7 @@ exec --no-startup-id fcitx
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id xrandr --output DP-1 --primary --auto --output HDMI-0 --right-of DP-1 --auto
 exec_always --no-startup-id LC_ALL=C MONITOR=HDMI-0 bash $HOME/.config/polybar/launch.sh --cuts &
-exec_always --no-startup-id LC_ALL=C MONITOR=DP-1 $HOME/.config/polybar/launch.sh --cuts
+exec_always --no-startup-id LC_ALL=C MONITOR=DP-1 bash $HOME/.config/polybar/launch.sh --cuts
 exec --no-startup-id discord
 exec --no-startup-id slack
 
