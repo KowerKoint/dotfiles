@@ -138,6 +138,8 @@ alias agi='sudo apt install'
 alias agr='sudo apt remove'
 alias agu='sudo apt update && sudo apt upgrade'
 alias e='exit'
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 
 #Ctrl+Rでコマンドの履歴を検索できる
 function peco-history-selection() {
