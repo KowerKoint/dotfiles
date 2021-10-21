@@ -103,21 +103,6 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:toml, {'lazy': 0})
   "call dein#load_toml(s:lazy_toml, {'lazy' : 1})
 
-  "easymotionのインストール
-  "VSCodeありなしで変わり、プラグイン名が等しいためtomlでうまくいかない
-  if exists("g:vscode")
-    call dein#add('asvetliakov/vim-easymotion')
-  else
-    call dein#add('easymotion/vim-easymotion')
-  endif
-  nmap s <Plug>(easymotion-s2)
-  xmap s <Plug>(easymotion-s2)
-  omap z <Plug>(easymotion-s2)
-  map f <Plug>(easymotion-fl)
-  map t <Plug>(easymotion-tl)
-  map F <Plug>(easymotion-Fl)
-  map T <Plug>(easymotion-Tl)
-
   call dein#end()
   call dein#save_state()
 endif
