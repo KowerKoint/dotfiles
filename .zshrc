@@ -1,5 +1,5 @@
 #PATHを入れまくる
-export PATH="$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/3.0.0/bin"
+export PATH="$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/.gem/ruby/3.0.0/bin"
 
 #WSL独自
 if [[ "$(uname -r)" == *microsoft* ]]; then
