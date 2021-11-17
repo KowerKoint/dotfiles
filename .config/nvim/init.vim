@@ -20,6 +20,8 @@ set clipboard+=unnamed,unnamedplus
 set wildmode=longest,full
 "未保存ファイルが有っても別のファイルを開く
 set hidden
+"マウスでカーソル移動したりビジュアルモードに入る
+set mouse=nv
 
 "LeaderキーをSpaceに設定(これだけでは意味をなさない)
 let mapleader = "\<Space>"
