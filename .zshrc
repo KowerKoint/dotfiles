@@ -143,6 +143,10 @@ alias e='exit'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
+if [[ -e $HOME/bin/.aliases.sh ]]; then
+  $HOME/bin/.aliases.sh
+fi
+
 #Ctrl+Rでコマンドの履歴を検索できる
 function peco-history-selection() {
   BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
