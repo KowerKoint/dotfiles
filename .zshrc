@@ -1,5 +1,6 @@
 #PATHを入れまくる
-export PATH="$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin"
+export GOPATH="$HOME/go"
+export PATH="/usr/local/go/bin:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$GOPATH/bin"
 
 #WSL独自
 if [[ "$(uname -r)" == *microsoft* ]]; then
@@ -11,6 +12,7 @@ if [[ "$(uname -r)" == *microsoft* ]]; then
       done
   }
   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+  export GPG_TTY=$(tty)
 fi
 
 #powerline:ターミナルの見た目
@@ -142,6 +144,10 @@ alias agu='sudo apt update && sudo apt upgrade'
 alias e='exit'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+
+if [[ -e $HOME/bin/.aliases.sh ]]; then
+  $HOME/bin/.aliases.sh
+fi
 
 #Ctrl+Rでコマンドの履歴を検索できる
 function peco-history-selection() {

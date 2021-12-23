@@ -121,3 +121,9 @@ endif
 
 "何故かこれがないとhookされなくなった
 call dein#call_hook('source')
+
+"dein#end()よりあとにcolorschemeを指定する必要があるらしい
+if dein#is_available('vim-hybrid')
+  set background=dark
+  colorscheme hybrid
+end
