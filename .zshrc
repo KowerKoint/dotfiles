@@ -106,6 +106,7 @@ man() {
 #環境変数
 export BROWSER=firefox
 export EDITOR=nvim
+export GPG_TTY=$(tty)
 
 #mkdirとcdを一度に行う関数
 function mc() {
