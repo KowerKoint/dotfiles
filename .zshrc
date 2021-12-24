@@ -44,6 +44,8 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 #Tab補完をめっちゃ強くする
 #https://github.com/zsh-users/zsh-completions
 zplug "zsh-users/zsh-completions"
+# 候補表示
+zplug "zsh-users/zsh-autosuggestions"
 #雑なcdを通す
 #https://github.com/b4b4r07/enhancd
 zplug "b4b4r07/enhancd", use:init.sh
