@@ -3,17 +3,17 @@ export GOPATH="$HOME/go"
 export PATH="/usr/local/go/bin:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$GOPATH/bin"
 
 #WSL独自
-if [[ "$(uname -r)" == *microsoft* ]]; then
-  fix_wsl2_interop() {
-      for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
-          if [[ -e "/run/WSL/${i}_interop" ]]; then
-              export WSL_INTEROP=/run/WSL/${i}_interop
-          fi
-      done
-  }
-  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
-  export GPG_TTY=$(tty)
-fi
+# if [[ "$(uname -r)" == *microsoft* ]]; then
+#   fix_wsl2_interop() {
+#       for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
+#           if [[ -e "/run/WSL/${i}_interop" ]]; then
+#               export WSL_INTEROP=/run/WSL/${i}_interop
+#           fi
+#       done
+#   }
+#   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+#   export GPG_TTY=$(tty)
+# fi
 
 #powerline:ターミナルの見た目
 #https://github.com/b-ryan/powerline-shell
@@ -144,7 +144,7 @@ alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
 if [[ -e $HOME/bin/.aliases.sh ]]; then
-  $HOME/bin/.aliases.sh
+  source $HOME/bin/.aliases.sh
 fi
 
 #Ctrl+Rでコマンドの履歴を検索できる
