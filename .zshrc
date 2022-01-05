@@ -83,8 +83,8 @@ if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]
 fi
 
 #色の設定 よくわからん
-eval `dircolors -b`
-eval `dircolors ${HOME}/.dircolors`
+#eval `dircolors -b`
+#eval `dircolors ${HOME}/.dircolors`
 
 autoload colors
 zstyle ':completion:*' verbose yes
@@ -131,6 +131,23 @@ function cmdedit() {
   nvim $(which $argv)
 }
 
+#pbcopy,pbpasteをLinuxにも
+function pbcopy() {
+  if [[ $(uname -r) == *linuxkit* ]]; then
+    xsel --clipboard --input
+  else
+    \pbcopy
+  fi
+fi
+
+function pbpaste() {
+  if [[ $(uname -r) == *linuxkit* ]]; then
+    xsel --clipboard --output
+  else
+    \pbpaste
+  fi
+fi
+
 #我がメチャクチャなエイリアス集！
 alias ls='lsd'
 alias ll='lsd -alF'
@@ -143,8 +160,6 @@ alias agi='sudo apt install'
 alias agr='sudo apt remove'
 alias agu='sudo apt update && sudo apt upgrade'
 alias e='exit'
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
 
 if [[ -e $HOME/bin/.aliases.sh ]]; then
   source $HOME/bin/.aliases.sh
