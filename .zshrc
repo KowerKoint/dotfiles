@@ -131,23 +131,6 @@ function cmdedit() {
   nvim $(which $argv)
 }
 
-#pbcopy,pbpasteをLinuxにも
-function pbcopy() {
-  if [[ $(uname -r) == *linuxkit* ]]; then
-    xsel --clipboard --input
-  else
-    \pbcopy
-  fi
-fi
-
-function pbpaste() {
-  if [[ $(uname -r) == *linuxkit* ]]; then
-    xsel --clipboard --output
-  else
-    \pbpaste
-  fi
-fi
-
 #我がメチャクチャなエイリアス集！
 alias ls='lsd'
 alias ll='lsd -alF'
