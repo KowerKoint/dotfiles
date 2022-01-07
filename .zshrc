@@ -1,6 +1,6 @@
 #PATHを入れまくる
 export GOPATH="$HOME/go"
-export PATH="/usr/local/go/bin:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$GOPATH/bin"
+export PATH="/usr/local/go/bin:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$GOPATH/bin:$HOME/Library/Python/3.9/bin"
 
 #WSL独自
 # if [[ "$(uname -r)" == *microsoft* ]]; then
