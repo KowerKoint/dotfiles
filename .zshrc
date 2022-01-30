@@ -15,28 +15,22 @@ export PATH="/usr/local/go/bin:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HO
 #   export GPG_TTY=$(tty)
 # fi
 
-#powerline:ターミナルの見た目
-#https://github.com/b-ryan/powerline-shell
-function powerline_precmd() {
-  PS1="$(powerline-shell --shell zsh $?)"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-  install_powerline_precmd
-fi 
-
 #zplug(Zshのプラグインインストーラ)
 #https://github.com/zplug/zplug
 source ~/.zplug/init.zsh
+
+#theme
+zplug romkatv/powerlevel10k, as:theme, depth:1
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #シンタックスハイライト
 #https://github.com/zsh-users/zsh-syntax-highlighting
