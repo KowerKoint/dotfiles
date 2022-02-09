@@ -2,6 +2,10 @@
 export GOPATH="$HOME/go"
 export PATH="/usr/local/go/bin:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$GOPATH/bin:$HOME/Library/Python/3.9/bin"
 
+# WSLでのGPG認証に
+# p10k-instant-promptより上じゃないと駄目らしい
+export GPG_TTY=$(tty)
+
 #WSL独自
 # if [[ "$(uname -r)" == *microsoft* ]]; then
 #   fix_wsl2_interop() {
@@ -102,7 +106,6 @@ man() {
 #環境変数
 export BROWSER=firefox
 export EDITOR=nvim
-export GPG_TTY=$(tty)
 
 #mkdirとcdを一度に行う関数
 function mc() {
