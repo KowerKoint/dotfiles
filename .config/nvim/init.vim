@@ -14,8 +14,6 @@ set autochdir
 set encoding=utf-8
 "読み込む文字列 : この場合UTF-8を試し、だめならShift_JIS
 set fileencodings=utf-8,cp932
-"Vimの無名レジスタとシステムのクリップボードを連携 : ダメならxclipをインストールで使えるかも
-set clipboard+=unnamed,unnamedplus
 "eコマンド等でTabキーを押すとパスを保管する : この場合まず最長一致文字列まで保管し、2回目以降は一つづつ試す
 set wildmode=longest,full
 "未保存ファイルが有っても別のファイルを開く
