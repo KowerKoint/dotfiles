@@ -8,8 +8,6 @@ set smartindent
 set shiftwidth=2
 "Tabキーで挿入するスペースの数
 set softtabstop=2
-"カレントディレクトリを自動で移動
-set autochdir
 "バッファ内で扱う文字コード
 set encoding=utf-8
 "読み込む文字列 : この場合UTF-8を試し、だめならShift_JIS
@@ -20,6 +18,8 @@ set wildmode=longest,full
 set hidden
 "マウスでカーソル移動したりビジュアルモードに入る
 set mouse=nv
+"F2でペーストモードをトグルする
+set pastetoggle=<F2>
 
 "LeaderキーをSpaceに設定(これだけでは意味をなさない)
 let mapleader = "\<Space>"
@@ -124,4 +124,9 @@ call dein#call_hook('source')
 if dein#is_available('vim-hybrid')
   set background=dark
   colorscheme hybrid
+end
+
+"commands.vimがあれば読み込む
+if filereadable('commands.vim')
+  source commands.vim
 end

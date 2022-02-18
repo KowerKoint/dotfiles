@@ -46,7 +46,7 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 #雑なcdを通す
 #https://github.com/b4b4r07/enhancd
-zplug "b4b4r07/enhancd", use:init.sh
+#zplug "b4b4r07/enhancd", use:init.sh
 
 #起動時にzplugの未インストールプラグイン確認
 if ! zplug check --verbose; then
@@ -58,9 +58,9 @@ fi
 zplug load
 
 #enhancdの設定
-export ENHANCD_FILTER=peco #検索機能はpecoを使用
-export ENHANCD_DISABLE_DOT=1 #"cd .."の挙動は通常通りにする
-export ENHANCD_DISABLE_HOME=1 #"cd"の挙動は通常通りにする
+#export ENHANCD_FILTER=peco #検索機能はpecoを使用
+#export ENHANCD_DISABLE_DOT=1 #"cd .."の挙動は通常通りにする
+#export ENHANCD_DISABLE_HOME=1 #"cd"の挙動は通常通りにする
 
 #コマンド履歴を保存
 HISTFILE=$HOME/.zsh-history
