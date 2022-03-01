@@ -5,9 +5,9 @@ set expandtab
 "プログラミング言語に合わせて適切にインデントを自動挿入
 set smartindent
 "各コマンドやsmartindentで挿入する空白の量
-set shiftwidth=2
+set shiftwidth=4
 "Tabキーで挿入するスペースの数
-set softtabstop=2
+set softtabstop=4
 "バッファ内で扱う文字コード
 set encoding=utf-8
 "読み込む文字列 : この場合UTF-8を試し、だめならShift_JIS
@@ -60,11 +60,6 @@ tnoremap <C-t> <C-\><C-n><C-w>k
 nnoremap <C-t> <C-w>ji
 "ターミナル挿入モードからターミナルモードへ以降
 tnoremap <Esc> <C-\><C-n>
-
-"コンパイラ言語ではインデントを4マスにする
-autocmd FileType c,cpp,java,cs,kotlin set shiftwidth=4 softtabstop=4
-"Visual Basic .NETのファイルタイプ判別
-autocmd BufNewFile,BufRead *.vb set filetype= vbnet
 
 "WSLのクリップボード連携
 if system('uname -a | grep microsoft') != ''
