@@ -1,2 +1,0 @@
--std=gnu++17
--I/home/kowerkoint/mylib/ac-library
