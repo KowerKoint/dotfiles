@@ -553,3 +553,13 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 [[plugins]]
 repo = 'Shougo/deol.nvim'
 if = '!exists("g:vscode")'
+
+# fzf
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install -all'
+merged = 0
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
