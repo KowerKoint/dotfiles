@@ -10,18 +10,9 @@ eval "$(rbenv init - zsh)"
 # p10k-instant-promptより上じゃないと駄目らしい
 export GPG_TTY=$(tty)
 
-#WSL独自
-# if [[ "$(uname -r)" == *microsoft* ]]; then
-#   fix_wsl2_interop() {
-#       for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
-#           if [[ -e "/run/WSL/${i}_interop" ]]; then
-#               export WSL_INTEROP=/run/WSL/${i}_interop
-#           fi
-#       done
-#   }
-#   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
-#   export GPG_TTY=$(tty)
-# fi
+#WSLのDNSサーバー問題
+if [[ "$(uname -r)" == *microsoft* ]]; then
+fi
 
 #zplug(Zshのプラグインインストーラ)
 #https://github.com/zplug/zplug
