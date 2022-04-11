@@ -3,6 +3,9 @@ export GOPATH="$HOME/go"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$HOME/.rbenv/bin:/usr/local/go/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$GOPATH/bin:$HOME/Library/Python/3.9/bin"
 
+#pyenv
+eval "$(pyenv init -)"
+
 #rbenv
 eval "$(rbenv init - zsh)"
 
