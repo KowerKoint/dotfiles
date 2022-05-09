@@ -81,6 +81,9 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
+# emacsのbindkey
+bindkey -e
+
 #enhancdの設定
 #export ENHANCD_FILTER=peco #検索機能はpecoを使用
 #export ENHANCD_DISABLE_DOT=1 #"cd .."の挙動は通常通りにする
@@ -261,3 +264,4 @@ elif type compctl &>/dev/null; then
   }
   compctl -K _npm_completion npm
 fi
+
