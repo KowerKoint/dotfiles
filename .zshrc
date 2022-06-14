@@ -139,15 +139,6 @@ function mc() {
   mkdir $argv && cd $argv
 }
 
-#デフォルトのアプリで開く WSLの場合はWindows側で開く
-function open() {
-  if [[ -e /proc/sys/fs/binfmt_misc/WSLInterop ]]; then
-    cmd.exe /c start $argv
-  else
-    xdg-open $argv &
-  fi
-}
-
 setopt auto_cd #ディレクトリ名を直接打つだけでcdする
 
 #コマンドのスクリプトをnvimで開く
