@@ -117,7 +117,9 @@ call dein#call_hook('source')
 
 "dein#end()よりあとにcolorschemeを指定する必要があるらしい
 if dein#is_available('vim-hybrid')
-  set background=dark
+  "ターミナルの背景画像を使う
+  autocmd ColorScheme * highlight Normal ctermbg=none
+  autocmd ColorScheme * highlight LineNr ctermbg=none
   colorscheme hybrid
 end
 
