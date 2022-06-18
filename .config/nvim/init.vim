@@ -61,11 +61,21 @@ nnoremap <C-t> <C-w>ji
 "ターミナル挿入モードからターミナルモードへ以降
 tnoremap <Esc> <C-\><C-n>
 
-"WSLのクリップボード連携
+"クリップボード連携
 if system('uname -a | grep microsoft') != ''
   augroup myYank
     autocmd!
     autocmd TextYankPost * :call system('clip.exe', @")
+  augroup END
+elseif system('uname -a | grep Darwin') != ''
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('pbcopy', @")
+  augroup END
+else
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('xclip -selection clipboard', @")
   augroup END
 endif
 
