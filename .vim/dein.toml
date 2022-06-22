@@ -563,3 +563,7 @@ merged = 0
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
+
+#copilot
+[[plugins]]
+repo = 'github/copilot.vim'
