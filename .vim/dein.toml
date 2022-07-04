@@ -567,3 +567,17 @@ depends = 'fzf'
 #copilot
 [[plugins]]
 repo = 'github/copilot.vim'
+
+# for print debug
+[[plugins]]
+repo = 'sentriz/vim-print-debug'
+hook_add='''
+nnoremap <leader>p :call print_debug#print_debug()<CR>
+let g:print_debug_templates = {
+\   'go':         'fmt.Printf("+++ {}\n")',
+\   'python':     'print(f"+++ {}")',
+\   'javascript': 'console.log(`+++ {}`);',
+\   'c':          'printf("+++ {}\n");',
+\  'cpp':        'cerr << "+++ {}\n";'
+\ }
+'''
