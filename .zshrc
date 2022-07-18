@@ -163,7 +163,7 @@ if [[ -e $HOME/bin/.aliases.sh ]]; then
   source $HOME/bin/.aliases.sh
 fi
 
-if [[ which gomi ]]; then
+if which gomi > /dev/null; then
   alias rm='gomi'
 fi
 
