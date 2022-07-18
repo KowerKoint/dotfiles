@@ -163,6 +163,10 @@ if [[ -e $HOME/bin/.aliases.sh ]]; then
   source $HOME/bin/.aliases.sh
 fi
 
+if [[ which gomi ]]; then
+  alias rm='gomi'
+fi
+
 #Ctrl+Rでコマンドの履歴を検索できる
 function peco-history-selection() {
   BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
