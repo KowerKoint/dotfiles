@@ -38,10 +38,14 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$HOME/.rbenv/bin:/usr/local/go/bin:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH:$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$GOPATH/bin"
 
 #pyenv
-eval "$(pyenv init -)"
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+fi
 
 #rbenv
-eval "$(rbenv init - zsh)"
+if which rbenv > /dev/null; then
+    eval "$(rbenv init - zsh)"
+fi
 
 #zplug(Zshのプラグインインストーラ)
 #https://github.com/zplug/zplug
@@ -146,7 +150,7 @@ function cmdedit() {
   nvim $(which $argv)
 }
 
-#我がメチャクチャなエイリアス集！
+#エイリアス集
 alias ls='lsd'
 alias ll='lsd -alF'
 alias ..2='../..'
