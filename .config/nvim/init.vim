@@ -72,6 +72,11 @@ elseif system('uname -a | grep Darwin') != ''
     autocmd!
     autocmd TextYankPost * :call system('pbcopy', @")
   augroup END
+elseif system('which clip.sh') != ''
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.sh -i', @")
+  augroup END
 else
   augroup myYank
     autocmd!
