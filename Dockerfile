@@ -36,6 +36,7 @@ RUN apt-get install -y \
     ruby \
     ruby-dev \
     silversearcher-ag \
+    socat \
     sudo \
     peco \
     pkg-config \
@@ -59,6 +60,10 @@ RUN mkdir -p /tmp \
     && make CMAKE_BUILD=RelWithDebInfo \
     && make install \
     && rm -rf /tmp/neovim
+
+COPY ./clip.sh /usr/local/bin
+RUN ln -s /usr/local/bin/clip.sh /usr/local/bin/xsel
+RUN ln -s /usr/local/bin/clip.sh /usr/local/bin/xclip
 
 RUN groupadd -g ${DOCKER_GID} ${DOCKER_GROUP} \
     && useradd -m -u ${DOCKER_UID} -g ${DOCKER_GID} --create-home --shell /bin/zsh ${DOCKER_USER} \
