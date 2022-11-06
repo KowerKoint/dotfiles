@@ -74,7 +74,7 @@ WORKDIR /home/${DOCKER_USER}
 ENV HOME /home/${DOCKER_USER}
 
 RUN mkdir -p ${HOME}/.local/bin
-COPY ./git-credential-github-token ${HOME}/.local/bin
+COPY ./git-credential-github-token /home/docker/.local/bin
 RUN git config --global url."https://github.com/KowerKoint/".insteadOf ssh://git@github.com/KowerKoint/ \
     && git config --global credential.helper github-token
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
