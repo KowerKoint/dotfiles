@@ -264,3 +264,4 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 
+set JAVA_HOME=/usr/lib/jvm/java-19-openjdk
