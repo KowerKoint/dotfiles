@@ -7,7 +7,6 @@ local options = {
     -- 挙動
     wildmode = { "longest", "full" },
     mouse = "nv",
-    pastetoggle = "<F2>",
     smartindent = true,
 
     -- コーディングスタイル
